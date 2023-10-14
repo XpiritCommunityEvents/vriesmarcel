@@ -54,17 +54,17 @@ jobs:
           run: |
             ls ${{env.DOTNET_ROOT}} -R
             mkdir frontend-dist
-            cp ${{env.DOTNET_ROOT}}/frontend/bin/Release/net6.0/publish/* ./frontend-dist
+            cp ${{env.DOTNET_ROOT}}/frontend/* ./frontend-dist
             cd frontend-dist
             zip frontend.zip ./* -r
             cd ..
             mkdir ordering-dist
-            mv ${{env.DOTNET_ROOT}}/ordering/bin/Release/net6.0/publish/* ./ordering-dist
+            mv ${{env.DOTNET_ROOT}}/ordering/* ./ordering-dist
             cd ordering-dist
             zip ordering.zip ./* -r
             cd ..
             mkdir catalog-dist
-            mv ${{env.DOTNET_ROOT}}/catalog/bin/Release/net6.0/publish/* ./catalog-dist
+            mv ${{env.DOTNET_ROOT}}/catalog/* ./catalog-dist
             cd catalog-dist
             zip catalog.zip ./* -r
             cd ..
