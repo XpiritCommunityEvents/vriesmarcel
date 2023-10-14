@@ -53,15 +53,15 @@ jobs:
         - name: Zip artifact for deployment
           run: |
             mkdir frontend-dist
-            mv frontend/bin/Release/net6.0/publish/* ./frontend-dist
+            mv ${{env.DOTNET_ROOT}}/frontend/bin/Release/net6.0/publish/* ./frontend-dist
             cd frontend-dist
             zip frontend.zip ./* -r
             mkdir ordering-dist
-            mv ordering/bin/Release/net6.0/publish/* ./ordering-dist
+            mv ${{env.DOTNET_ROOT}}/ordering/bin/Release/net6.0/publish/* ./ordering-dist
             cd ordering-dist
             zip ordering.zip ./* -r
             mkdir catalog-dist
-            mv catalog/bin/Release/net6.0/publish/* ./catalog-dist
+            mv ${{env.DOTNET_ROOT}}/catalog/bin/Release/net6.0/publish/* ./catalog-dist
             cd catalog-dist
             zip catalog.zip ./* -r
             
