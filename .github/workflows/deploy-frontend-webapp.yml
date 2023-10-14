@@ -1,8 +1,8 @@
 name: Deployment globoticket Frontend
 env:
   HomePage: ''
-  appname: vriesmarcel-frontend
-  resourcegroup: rg-vriesmarcel
+  appname: globoticket
+  resourcegroup: globoticket
   slotname: staging
 on:
   release: 
