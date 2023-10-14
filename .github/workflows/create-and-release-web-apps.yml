@@ -52,7 +52,6 @@ jobs:
 
         - name: Zip artifact for deployment
           run: |
-            ls ${{env.DOTNET_ROOT}} -R
             mkdir frontend-dist
             cp ${{env.DOTNET_ROOT}}/frontend/* ./frontend-dist
             cd frontend-dist
