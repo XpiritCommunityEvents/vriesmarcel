@@ -53,17 +53,17 @@ jobs:
         - name: Zip artifact for deployment
           run: |
             mkdir frontend-dist
-            cp ${{env.DOTNET_ROOT}}/frontend/* ./frontend-dist
+            cp ${{env.DOTNET_ROOT}}/frontend/* ./frontend-dist -r
             cd frontend-dist
             zip frontend.zip ./* -r
             cd ..
             mkdir ordering-dist
-            mv ${{env.DOTNET_ROOT}}/ordering/* ./ordering-dist
+            mv ${{env.DOTNET_ROOT}}/ordering/* ./ordering-dist -r
             cd ordering-dist
             zip ordering.zip ./* -r
             cd ..
             mkdir catalog-dist
-            mv ${{env.DOTNET_ROOT}}/catalog/* ./catalog-dist
+            mv ${{env.DOTNET_ROOT}}/catalog/* ./catalog-dist -r
             cd catalog-dist
             zip catalog.zip ./* -r
             cd ..
