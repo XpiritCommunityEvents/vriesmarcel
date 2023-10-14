@@ -23,10 +23,6 @@ jobs:
           regex: true
           file: ".*"
           target: './'
-
-      - name: UnZip artifact for deployment
-        run: |
-          unzip ./catalog.zip -d ./catalog
         
       - name: Azure Login
         uses: azure/login@v1
@@ -45,7 +41,7 @@ jobs:
         with:
           app-name: '${{env.appname}}'
           slot-name: '${{env.slotname}}'
-          package: ./catalog
+          package: ./catalog.zip
       - name: Set homepage location for next job
         run: |
           echo "homepage=${{ steps.deploy-to-webapp.outputs.webapp-url }}" >> $GITHUB_OUTPUT
