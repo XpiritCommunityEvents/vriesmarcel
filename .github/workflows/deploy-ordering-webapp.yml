@@ -1,4 +1,4 @@
-name: Deployment globoticket Frontend
+name: Deployment globoticket ordering
 env:
   HomePage: ''
   appname: globoticket-ordering
