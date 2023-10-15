@@ -57,14 +57,14 @@ jobs:
       - name: vip swap
         uses: Azure/cli@v1.0.7
         with:
-          inlinescript: 'az webapp deployment slot swap --slot ${{env.slotname}}  --name ${{env.appname}} --resource-group ${{env.resourcegroup}}'
+          inlineScript: 'az webapp deployment slot swap --slot ${{env.slotname}}  --name ${{env.appname}} --resource-group ${{env.resourcegroup}}'
 
       - name: clear Routing rules (100% to production)
         uses: Azure/cli@v1.0.7
         with:
-          inlinescript: 'az webapp traffic-routing clear --name ${{env.appname}} --resource-group ${{env.resourcegroup}}'
+          inlineScript: 'az webapp traffic-routing clear --name ${{env.appname}} --resource-group ${{env.resourcegroup}}'
 
       - name: clear staging slot
         uses: Azure/cli@v1.0.7
         with:
-          inlinescript: 'az webapp deployment slot delete --name ${{env.appname}} --resource-group ${{env.resourcegroup}} --slot ${{env.slotname}}'
+          inlineScript: 'az webapp deployment slot delete --name ${{env.appname}} --resource-group ${{env.resourcegroup}} --slot ${{env.slotname}}'
