@@ -84,7 +84,7 @@ jobs:
           homepage: ${{ needs.deploy.outputs.homepage }}
   VipSwap:
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: validate
     steps:
       - name: Azure Login
         uses: azure/login@v1
