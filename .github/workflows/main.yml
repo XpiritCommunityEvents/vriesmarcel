@@ -1,0 +1,13 @@
+name: "vulnerable action workflow"
+
+on:
+  issues:
+    type: created
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: show issue title
+      run: echo "${{ github.event.issue.title }}"
