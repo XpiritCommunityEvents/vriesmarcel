@@ -43,6 +43,7 @@ jobs:
           package: ./frontend.zip
       - name: Set homepage location for next job
         run: |
+          echo "homepage=${{ steps.deploy-to-webapp.outputs.webapp-url }}"
           echo "homepage=${{ steps.deploy-to-webapp.outputs.webapp-url }}" >> $GITHUB_OUTPUT
           
   validate:
