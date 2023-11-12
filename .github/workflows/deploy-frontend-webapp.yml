@@ -13,7 +13,8 @@ jobs:
     environment:
       name: 'staging'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    outputs:
+      homepage: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
       - name: get release artifacts for deployment, picks data from latest release
         uses: dsaltares/fetch-gh-release-asset@master
@@ -41,11 +42,7 @@ jobs:
           app-name: '${{env.appname}}'
           slot-name: '${{env.slotname}}'
           package: ./frontend.zip
-      - name: Set homepage location for next job
-        run: |
-          echo "homepage=${{ steps.deploy-to-webapp.outputs.webapp-url }}"
-          echo "homepage=${{ steps.deploy-to-webapp.outputs.webapp-url }}" >> $GITHUB_OUTPUT
-          
+           
   validate:
     runs-on: ubuntu-latest
     needs: deploy
