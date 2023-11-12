@@ -1,6 +1,5 @@
 name: Deployment globoticket Frontend
 env:
-  HomePage: ''
   appname: globoticket
   resourcegroup: globoticket
   slotname: staging
@@ -54,7 +53,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-
+      - name: print env
+        run: echo $homepage
+        env: 
+          homepage: ${{ needs.deploy.outputs.homepage }}        
       - name: Install playwright
         run:  npm init playwright@latest
           
