@@ -68,18 +68,16 @@ jobs:
      
       - name: ensure deployment is healthy before we test
         run: |
-            HEALTH_ENDPOINT=  "${{ needs.deploy.outputs.homepage }}/health/ready"
-            while true; do
-              response=$(curl -s "$HEALTH_ENDPOINT")
-              status=$(echo "$response" | jq -r '.status')
-
-              if [[ "$status" == "Healthy" ]]; then
-                echo "Health endpoint current status :" $status
-                break
-              fi
+            response=$(curl -s "${homepage}/health/ready")
+            status=$(echo "$response" | jq -r '.status')
+  
+            while [[ "$status" != "Healthy" ]]; do
               echo "Waiting for health endpoint..."
               sleep 1
+              response=$(curl -s "${homepage}/health/ready")
+              status=$(echo "$response" | jq -r '.status')
             done
+            echo "Health endpoint current status :" $status
         env: 
           homepage: ${{ needs.deploy.outputs.homepage }}
       - name: Run tests
